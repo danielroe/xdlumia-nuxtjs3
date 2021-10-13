@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": false,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "strict": false,
+    "allowJs": true,
+    "noUnusedLocals": true,
+    "resolveJsonModule": true,
+    "types": [
+      "node",
+      "mocha",
+      "chai"
+    ],
+    "paths": {
+      "#app": [
+        "./packages/nuxt3/src/app/index"
+      ],
+      "#app/*": [
+        "./packages/nuxt3/src/app/*"
+      ]
+    }
+  },
+  "exclude": [
+    "**/*/dist/*"
+  ]
+}

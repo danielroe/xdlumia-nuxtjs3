@@ -1,0 +1,50 @@
+{
+  "name": "nuxi",
+  "version": "3.0.0",
+  "repository": "nuxt/framework",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./cli": "./bin/nuxi.mjs"
+  },
+  "bin": {
+    "nu": "./bin/nuxi.mjs",
+    "nuxi": "./bin/nuxi.mjs"
+  },
+  "scripts": {
+    "prepack": "unbuild"
+  },
+  "files": [
+    "bin",
+    "dist"
+  ],
+  "optionalDependencies": {
+    "fsevents": "~2.3.2"
+  },
+  "devDependencies": {
+    "@nuxt/design": "0.1.3",
+    "@nuxt/kit": "3.0.0",
+    "@types/clear": "^0",
+    "@types/debounce-promise": "^3",
+    "@types/mri": "^1.1.1",
+    "chokidar": "^3.5.2",
+    "clear": "^0.1.0",
+    "clipboardy": "^2.3.0",
+    "colorette": "^2.0.16",
+    "consola": "^2.15.3",
+    "debounce-promise": "^3.1.2",
+    "deep-object-diff": "^1.1.0",
+    "degit": "^2.8.4",
+    "destr": "^1.1.0",
+    "flat": "^5.0.2",
+    "jiti": "^1.12.6",
+    "listhen": "^0.2.4",
+    "mlly": "^0.2.6",
+    "mri": "^1.2.0",
+    "pathe": "^0.2.0",
+    "scule": "^0.2.1",
+    "superb": "^4.0.0",
+    "unbuild": "latest"
+  }
+}
