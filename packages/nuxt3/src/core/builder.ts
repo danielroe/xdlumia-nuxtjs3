@@ -1,3 +1,4 @@
+import { relative, resolve } from 'node:path'
 import chokidar from 'chokidar'
 import { Nuxt } from '@nuxt/kit'
 import fse from 'fs-extra'
@@ -13,6 +14,7 @@ export async function build (nuxt: Nuxt) {
   if (nuxt.options.dev) {
     watch(nuxt)
     nuxt.hook('builder:watch', async (event, path) => {
+      path = relative(nuxt.options.srcDir, resolve(nuxt.options.srcDir, path))
       if (event !== 'change' && /app|plugins/i.test(path)) {
         if (path.match(/app/i)) {
           app.mainComponent = null
@@ -49,6 +51,7 @@ function watch (nuxt: Nuxt) {
 }
 
 async function bundle (nuxt: Nuxt) {
+    watchHook = relative(nuxt.options.srcDir, resolve(nuxt.options.srcDir, watchHook))
   const useVite = nuxt.options.vite !== false
   const { bundle } = await (useVite ? import('@nuxt/vite-builder') : import('@nuxt/webpack-builder'))
   return bundle(nuxt)

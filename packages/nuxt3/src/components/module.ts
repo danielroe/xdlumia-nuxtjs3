@@ -1,5 +1,5 @@
 import { statSync } from 'fs'
-import { resolve } from 'pathe'
+import { relative, resolve } from 'pathe'
 import { defineNuxtModule, resolveAlias, addVitePlugin, addWebpackPlugin } from '@nuxt/kit'
 import { componentsTemplate, componentsTypeTemplate } from './templates'
 import { scanComponents } from './scan'
@@ -84,6 +84,7 @@ export default defineNuxtModule({
 
     // Watch for changes
     nuxt.hook('builder:watch', async (event, path) => {
+      path = relative(nuxt.options.srcDir, resolve(nuxt.options.srcDir, path))
       if (!['add', 'unlink'].includes(event)) {
         return
       }

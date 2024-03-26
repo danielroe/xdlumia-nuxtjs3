@@ -1,3 +1,4 @@
+import { relative, resolve } from 'node:path'
 import type { IncomingMessage, ServerResponse } from 'http'
 import type { HookCallback } from 'hookable'
 import type { Compiler, Configuration, Stats } from 'webpack'
@@ -52,7 +53,8 @@ export interface NuxtHooks extends Record<string, HookCallback> {
   'builder:watch': (event: WatchEvent, path: string) => HookResult
 
   // @nuxt/nitro
-  'nitro:document': (template: { src: string, contents: string }) => HookResult
+  'nitro:document': (template: {
+    path: string = relative(nuxt.options.srcDir, resolve(nuxt.options.srcDir, path: string)) src: string, contents: string }) => HookResult
 
   // @nuxt/cli
   'cli:buildError': (error: unknown) => HookResult

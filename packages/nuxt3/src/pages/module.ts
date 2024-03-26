@@ -1,6 +1,6 @@
 import { existsSync } from 'fs'
 import { defineNuxtModule, addTemplate, addPlugin } from '@nuxt/kit'
-import { resolve } from 'pathe'
+import { relative, resolve } from 'pathe'
 import { distDir } from '../dirs'
 import { resolveLayouts, resolvePagesRoutes } from './utils'
 
@@ -17,6 +17,7 @@ export default defineNuxtModule({
 
     // Regenerate templates when adding or removing pages
     nuxt.hook('builder:watch', async (event, path) => {
+      path = relative(nuxt.options.srcDir, resolve(nuxt.options.srcDir, path))
       const pathPattern = new RegExp(`^(${nuxt.options.dir.pages}|${nuxt.options.dir.layouts})/`)
       if (event !== 'change' && path.match(pathPattern)) {
         await nuxt.callHook('builder:generateApp')
